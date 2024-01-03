@@ -1,3 +1,4 @@
+import StoreIcon from "@mui/icons-material/Store";
 import { Box, Button, Typography, useTheme } from "@mui/material";
 import heroImg from "../assets/hero.jpg";
 
@@ -6,32 +7,31 @@ const HomePage = () => {
   return (
     <Box sx={{ display: "flex", overflow: "hidden", height: "61rem" }}>
       <Box
-        width="50%"
+        width="40%"
         sx={{
           backgroundImage: `url(${heroImg})`,
           backgroundSize: "cover",
-          backgroundPositionY: -210,
+          backgroundPositionY: -50,
         }}
       ></Box>
       <Box
-        width="50%"
+        width="60%"
         sx={{
-          backgroundColor: "#131d23",
+          backgroundColor: theme.palette.secondary.main,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          justifyContent: "center",
+          justifyContent: "space-evenly",
           padding: 8,
-          gap: 8,
         }}
       >
         <Typography
           sx={{
-            color: "#d279eb",
+            color: "white",
             fontWeight: "800",
             fontFamily: "inter",
-            fontSize: "5.5rem",
-            lineHeight: "6rem",
+            fontSize: "8rem",
+            lineHeight: "8.3rem",
           }}
         >
           New Year,{" "}
@@ -41,7 +41,7 @@ const HomePage = () => {
               fontSize: "inherit",
               fontWeight: "inherit",
               lineHeight: "inherit",
-              color: "white",
+              color: theme.palette.primary.light,
             }}
           >
             New Looks
@@ -49,28 +49,30 @@ const HomePage = () => {
         </Typography>
         <Typography
           variant="h5"
+          width={"80%"}
           sx={{
             fontSize: "1.8rem",
-            color: "#864b98",
-            fontFamily: "serif",
+            color: "white",
+            fontFamily: "barlow",
+            textAlign: "center",
           }}
         >
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum
           assumenda dolorum, iusto laudantium eum harum, explicabo qui debitis
-          veritatis totam asperiores, corporis ex? Labore recusandae suscipit
-          cumque explicabo praesentium.
+          veritatis totam asperiores.
         </Typography>
         <Button
+          startIcon={<StoreIcon />}
           size="large"
           sx={{
-            backgroundColor: "#d279eb",
+            backgroundColor: theme.palette.primary.light,
             color: "white",
             fontWeight: "bold",
-            px: 4,
-            py: 1.5,
+            width: "18rem",
+            paddingY: 2,
 
             "&:hover": {
-              backgroundColor: theme.palette.primary.main,
+              backgroundColor: theme.palette.secondary.light,
             },
           }}
         >
