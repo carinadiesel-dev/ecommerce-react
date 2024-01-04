@@ -1,6 +1,7 @@
 import { ThemeProvider, createTheme } from "@mui/material";
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
 import App from "./App.tsx";
 import "./index.css";
 
@@ -25,6 +26,10 @@ const purpleTheme = createTheme({
     success: {
       main: "#d1beb0",
     },
+    background: {
+      default: "#131D23",
+      paper: "#864B98",
+    },
   },
   typography: {
     fontFamily: ["Barlow", "Inter"].join(","),
@@ -34,7 +39,9 @@ const purpleTheme = createTheme({
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <ThemeProvider theme={purpleTheme}>
     <React.StrictMode>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </React.StrictMode>
   </ThemeProvider>
 );

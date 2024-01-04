@@ -5,7 +5,7 @@ import heroImg from "../assets/hero.jpg";
 const HomePage = () => {
   const theme = useTheme();
   return (
-    <Box sx={{ display: "flex", overflow: "hidden", height: "61rem" }}>
+    <Box sx={{ display: "flex", overflow: "hidden", height: "55rem" }}>
       <Box
         width="40%"
         sx={{
