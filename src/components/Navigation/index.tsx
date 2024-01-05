@@ -164,7 +164,7 @@ export default function NavBar() {
               </NavLink>
             ))}
             <Box sx={{ flexGrow: 0 }}>
-              <Tooltip title="Open settings">
+              <Tooltip title="Show Cart">
                 <Button
                   sx={{
                     py: 1,

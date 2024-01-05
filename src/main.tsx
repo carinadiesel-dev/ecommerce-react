@@ -28,7 +28,7 @@ const purpleTheme = createTheme({
     },
     background: {
       default: "#131D23",
-      paper: "#864B98",
+      paper: "#ffff",
     },
   },
   typography: {
