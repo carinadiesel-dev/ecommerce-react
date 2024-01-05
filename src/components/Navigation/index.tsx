@@ -19,8 +19,8 @@ type Page = {
 };
 
 const pages: Page[] = [
-  { title: "Home", href: "#" },
-  { title: "Products", href: "#" },
+  { title: "Home", href: "/" },
+  { title: "Products", href: "/products" },
 ];
 
 const cartItems = ["Item1", "Item2"];
