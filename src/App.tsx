@@ -6,6 +6,7 @@ import AllProducts from "./pages/ProductPages/AllProducts";
 import ElectronicsPage from "./pages/ProductPages/Electronics";
 import JewelryPage from "./pages/ProductPages/Jewelry";
 import MensClothingPage from "./pages/ProductPages/MensClothing";
+import WomensClothingPage from "./pages/ProductPages/WomensClothing";
 import ProductsHomePage from "./pages/ProductPages/index";
 function App() {
   return (
@@ -20,6 +21,10 @@ function App() {
           <Route
             path="/products/mens-clothing"
             element={<MensClothingPage />}
+          />
+          <Route
+            path="/products/womens-clothing"
+            element={<WomensClothingPage />}
           />
         </Route>
       </Routes>
