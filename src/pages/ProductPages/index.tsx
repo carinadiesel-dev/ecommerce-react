@@ -28,22 +28,22 @@ const ProductsHomePage = () => {
     {
       title: "Electronics",
       image: `${electronicsImg}`,
-      link: "#",
+      link: "/products/electronics",
     },
     {
       title: "Jewelry",
       image: `${jewelryImg}`,
-      link: "#",
+      link: "/products/jewelry",
     },
     {
       title: "Men's Clothing",
       image: `${mensClothingImg}`,
-      link: "#",
+      link: "/products/mens-clothing",
     },
     {
       title: "Women's Clothing",
       image: `${womensClothingImg}`,
-      link: "#",
+      link: "/products/womens-clothing",
     },
   ];
 
