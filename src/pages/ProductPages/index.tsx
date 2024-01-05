@@ -103,7 +103,7 @@ const ProductsHomePage = () => {
             </Typography>
           </Typography>
           <Box sx={{ display: "flex", gap: 6 }}>
-            <Link>
+            <Link href={"/products/all-products"}>
               <Button
                 size="large"
                 sx={{

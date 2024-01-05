@@ -1,5 +1,5 @@
 import StoreIcon from "@mui/icons-material/Store";
-import { Box, Button, Typography, useTheme } from "@mui/material";
+import { Box, Button, Link, Typography, useTheme } from "@mui/material";
 import heroImg from "../assets/hero.jpg";
 
 const HomePage = () => {
@@ -61,23 +61,25 @@ const HomePage = () => {
           assumenda dolorum, iusto laudantium eum harum, explicabo qui debitis
           veritatis totam asperiores.
         </Typography>
-        <Button
-          startIcon={<StoreIcon />}
-          size="large"
-          sx={{
-            backgroundColor: theme.palette.primary.light,
-            color: "white",
-            fontWeight: "bold",
-            width: "18rem",
-            paddingY: 2,
+        <Link href="/products">
+          <Button
+            startIcon={<StoreIcon />}
+            size="large"
+            sx={{
+              backgroundColor: theme.palette.primary.light,
+              color: "white",
+              fontWeight: "bold",
+              width: "18rem",
+              paddingY: 2,
 
-            "&:hover": {
-              backgroundColor: theme.palette.secondary.light,
-            },
-          }}
-        >
-          Shop Now
-        </Button>
+              "&:hover": {
+                backgroundColor: theme.palette.secondary.light,
+              },
+            }}
+          >
+            Shop Now
+          </Button>
+        </Link>
       </Box>
     </Box>
   );
