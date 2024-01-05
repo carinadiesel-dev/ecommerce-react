@@ -36,9 +36,10 @@ export default function CategoryCard({
             fontWeight: 600,
             padding: 3,
             textDecoration: "none",
+            backgroundColor: theme.palette.primary.dark,
 
             "&:hover, &:focus": {
-              backgroundColor: theme.palette.secondary.light,
+              backgroundColor: theme.palette.primary.light,
               textDecoration: "none",
               color: theme.palette.secondary.main,
             },

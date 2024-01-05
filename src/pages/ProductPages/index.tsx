@@ -7,13 +7,13 @@ import {
   useTheme,
 } from "@mui/material";
 import { ReactNode } from "react";
-import electronicsImg from "../assets/electronics.jpg";
-import jewelryImg from "../assets/jewelry.jpg";
-import loveImg from "../assets/love.png";
-import mensClothingImg from "../assets/mensClothing.jpg";
-import productsHeaderImg from "../assets/productsHeaderImg.jpg";
-import womensClothingImg from "../assets/womensClothing.jpg";
-import CategoryCard from "../components/CategoryCard";
+import electronicsImg from "../../assets/electronics.jpg";
+import jewelryImg from "../../assets/jewelry.jpg";
+import loveImg from "../../assets/love.png";
+import mensClothingImg from "../../assets/mensClothing.jpg";
+import productsHeaderImg from "../../assets/productsHeaderImg.jpg";
+import womensClothingImg from "../../assets/womensClothing.jpg";
+import CategoryCard from "../../components/CategoryCard";
 
 type Category = {
   title: string;
@@ -48,7 +48,7 @@ const ProductsHomePage = () => {
   ];
 
   return (
-    <Box>
+    <Box sx={{ backgroundColor: theme.palette.secondary.main }}>
       <Box
         height={"60rem"}
         sx={{
@@ -144,43 +144,41 @@ const ProductsHomePage = () => {
           </Box>
         </Box>
       </Box>
-      <section id="shopByCategory">
-        <Container sx={{ paddingY: 10 }}>
-          <Typography
-            sx={{
-              gap: 4,
-              fontSize: "6rem",
-              fontWeight: 600,
-              lineHeight: "6.5rem",
-              color: theme.palette.primary.dark,
-              paddingBottom: 7,
-              textAlign: "center",
-            }}
-          >
-            Shop By Category
-          </Typography>
-          <Box
-            width={"100%"}
-            sx={{
-              display: "flex",
-              marginBottom: 5,
-              flexWrap: "wrap",
-              gap: 8,
-              justifyContent: "center",
-              py: 5,
-            }}
-          >
-            {categories.map((category, index) => (
-              <CategoryCard
-                key={index}
-                title={category.title}
-                image={category.image}
-                link={category.link}
-              />
-            ))}
-          </Box>
-        </Container>
-      </section>
+      <Container id="shopByCategory" sx={{ paddingY: 10 }}>
+        <Typography
+          sx={{
+            gap: 4,
+            fontSize: "6rem",
+            fontWeight: 600,
+            lineHeight: "6.5rem",
+            color: "white",
+            paddingBottom: 7,
+            textAlign: "center",
+            textShadow: 4,
+          }}
+        >
+          Shop By Category
+        </Typography>
+        <Box
+          width={"100%"}
+          sx={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: 8,
+            justifyContent: "center",
+            py: 5,
+          }}
+        >
+          {categories.map((category, index) => (
+            <CategoryCard
+              key={index}
+              title={category.title}
+              image={category.image}
+              link={category.link}
+            />
+          ))}
+        </Box>
+      </Container>
     </Box>
   );
 };
