@@ -71,7 +71,8 @@ const ProductsHomePage = () => {
             backgroundColor: theme.palette.secondary.main,
             marginLeft: 10,
             marginTop: 15,
-            borderRadius: 10,
+            borderRadius: "20px",
+            boxShadow: 4,
           }}
         >
           <Typography
@@ -142,9 +143,6 @@ const ProductsHomePage = () => {
             </Link>
           </Box>
         </Box>
-
-        {/* </Box> */}
-        {/* </Box> */}
       </Box>
       <section id="shopByCategory">
         <Container sx={{ paddingY: 10 }}>

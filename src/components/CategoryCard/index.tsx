@@ -24,6 +24,7 @@ export default function CategoryCard({
           backgroundImage: `url(${image})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
+          boxShadow: 4,
         }}
       >
         <Chip
