@@ -3,9 +3,10 @@ import "./App.css";
 import Layout from "./components/Layout";
 import HomePage from "./pages/Home";
 import AllProducts from "./pages/ProductPages/AllProducts";
-import JewelryPage from "./pages/ProductPages/Jewelry";
-import ProductsHomePage from "./pages/ProductPages/index";
 import ElectronicsPage from "./pages/ProductPages/Electronics";
+import JewelryPage from "./pages/ProductPages/Jewelry";
+import MensClothingPage from "./pages/ProductPages/MensClothing";
+import ProductsHomePage from "./pages/ProductPages/index";
 function App() {
   return (
     <>
@@ -16,6 +17,10 @@ function App() {
           <Route path="/products/all-products" element={<AllProducts />} />
           <Route path="/products/electronics" element={<ElectronicsPage />} />
           <Route path="/products/jewelry" element={<JewelryPage />} />
+          <Route
+            path="/products/mens-clothing"
+            element={<MensClothingPage />}
+          />
         </Route>
       </Routes>
     </>
