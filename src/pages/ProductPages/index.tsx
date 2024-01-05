@@ -48,7 +48,9 @@ const ProductsHomePage = () => {
   ];
 
   return (
-    <Box sx={{ backgroundColor: theme.palette.secondary.main }}>
+    <Box
+      sx={{ backgroundColor: theme.palette.secondary.main, overflow: "hidden" }}
+    >
       <Box
         height={"60rem"}
         sx={{
@@ -58,6 +60,16 @@ const ProductsHomePage = () => {
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
           backgroundPositionY: -100,
+          [theme.breakpoints.down("xl")]: {
+            backgroundPositionY: -50,
+            backgroundPositionX: -150,
+          },
+          [theme.breakpoints.down("lg")]: {
+            backgroundPositionX: -400,
+          },
+          [theme.breakpoints.down("md")]: {
+            backgroundImage: "none",
+          },
         }}
       >
         <Box
@@ -73,6 +85,19 @@ const ProductsHomePage = () => {
             marginTop: 15,
             borderRadius: "20px",
             boxShadow: 4,
+            [theme.breakpoints.down("xl")]: {
+              width: "50%",
+              height: 450,
+              marginTop: 18,
+            },
+            [theme.breakpoints.down("lg")]: {
+              height: 600,
+              marginTop: 5,
+            },
+            [theme.breakpoints.down("md")]: {
+              width: "100%",
+              boxShadow: "none",
+            },
           }}
         >
           <Typography
@@ -83,6 +108,10 @@ const ProductsHomePage = () => {
               fontSize: "8rem",
               lineHeight: "8.5rem",
               textAlign: "center",
+              [theme.breakpoints.down("xl")]: {
+                fontSize: "5rem",
+                lineHeight: "5.5rem",
+              },
             }}
           >
             Products{" "}
@@ -97,12 +126,30 @@ const ProductsHomePage = () => {
                 lineHeight: "6.5rem",
                 color: "white",
                 paddingTop: 3,
+                [theme.breakpoints.down("xl")]: {
+                  fontSize: "5rem",
+                  lineHeight: "5.5rem",
+                  gap: 2,
+                },
+                [theme.breakpoints.down("lg")]: {
+                  fontSize: "3.5rem",
+                  lineHeight: "4rem",
+                },
               }}
             >
-              You'll <img src={loveImg} height={120} /> Love
+              You'll <img src={loveImg} height={100} /> Love
             </Typography>
           </Typography>
-          <Box sx={{ display: "flex", gap: 6 }}>
+          <Box
+            sx={{
+              display: "flex",
+              gap: 6,
+              [theme.breakpoints.down("lg")]: {
+                flexDirection: "column",
+                gap: 4,
+              },
+            }}
+          >
             <Link href={"/products/all-products"}>
               <Button
                 size="large"
@@ -116,6 +163,12 @@ const ProductsHomePage = () => {
 
                   "&:hover": {
                     backgroundColor: theme.palette.secondary.light,
+                  },
+                  [theme.breakpoints.down("xl")]: {
+                    width: "15rem",
+                  },
+                  [theme.breakpoints.down("lg")]: {
+                    width: "100%",
                   },
                 }}
               >
@@ -135,6 +188,12 @@ const ProductsHomePage = () => {
 
                   "&:hover": {
                     backgroundColor: theme.palette.primary.light,
+                  },
+                  [theme.breakpoints.down("xl")]: {
+                    width: "15rem",
+                  },
+                  [theme.breakpoints.down("lg")]: {
+                    width: "100%",
                   },
                 }}
               >

@@ -11,15 +11,10 @@ const HomePage = () => {
         overflow: "hidden",
         height: "55rem",
         [theme.breakpoints.down("md")]: {
-          height: "47rem",
-        },
-        [theme.breakpoints.down("md")]: {
           height: "45rem",
         },
         [theme.breakpoints.down("sm")]: {
           flexDirection: "column",
-        },
-        [theme.breakpoints.down("sm")]: {
           height: "50rem",
         },
       }}
