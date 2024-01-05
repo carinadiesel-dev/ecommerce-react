@@ -1,6 +1,7 @@
 import { Box, Container, Grid, Typography, useTheme } from "@mui/material";
 import { useEffect, useState } from "react";
 import ProductCard from "../../components/ProductCard";
+import { useCartContext } from "../../context/CartContext";
 
 interface Product {
   id: number;
@@ -13,6 +14,7 @@ interface Product {
 
 export default function AllProductsPage() {
   const theme = useTheme();
+
   const [products, setProducts] = useState<Product[]>([]);
 
   const fetchProductData = async () => {

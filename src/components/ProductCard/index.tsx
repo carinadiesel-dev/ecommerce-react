@@ -1,10 +1,12 @@
 import { Box, Button, CardMedia, useTheme } from "@mui/material";
+import MuiAlert, { AlertProps } from "@mui/material/Alert";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardHeader from "@mui/material/CardHeader";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
+import { useCartContext } from "../../context/CartContext";
 
 type RecipeReviewCardProps = {
   id: number;
@@ -14,6 +16,13 @@ type RecipeReviewCardProps = {
   description: string;
   image: any;
 };
+
+const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
+  props,
+  ref
+) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 export default function ProductCard({
   id,
