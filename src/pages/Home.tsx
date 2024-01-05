@@ -5,17 +5,42 @@ import heroImg from "../assets/hero.jpg";
 const HomePage = () => {
   const theme = useTheme();
   return (
-    <Box sx={{ display: "flex", overflow: "hidden", height: "55rem" }}>
+    <Box
+      sx={{
+        display: "flex",
+        overflow: "hidden",
+        height: "55rem",
+        [theme.breakpoints.down("md")]: {
+          height: "47rem",
+        },
+        [theme.breakpoints.down("md")]: {
+          height: "45rem",
+        },
+        [theme.breakpoints.down("sm")]: {
+          flexDirection: "column",
+        },
+        [theme.breakpoints.down("sm")]: {
+          height: "50rem",
+        },
+      }}
+    >
       <Box
-        width="40%"
+        width={{ sm: "100%", md: "50%", xl: "40%" }}
         sx={{
           backgroundImage: `url(${heroImg})`,
           backgroundSize: "cover",
           backgroundPositionY: -50,
+          [theme.breakpoints.down("lg")]: {
+            backgroundPositionY: 0,
+            backgroundPositionX: -50,
+          },
+          [theme.breakpoints.down("sm")]: {
+            display: "none",
+          },
         }}
       ></Box>
       <Box
-        width="60%"
+        width={{ sm: "100%", md: "50%", xl: "60%" }}
         sx={{
           backgroundColor: theme.palette.secondary.main,
           display: "flex",
@@ -23,6 +48,9 @@ const HomePage = () => {
           alignItems: "center",
           justifyContent: "space-evenly",
           padding: 8,
+          [theme.breakpoints.down("lg")]: {
+            padding: 5,
+          },
         }}
       >
         <Typography
@@ -32,6 +60,14 @@ const HomePage = () => {
             fontFamily: "inter",
             fontSize: "8rem",
             lineHeight: "8.3rem",
+            [theme.breakpoints.down("lg")]: {
+              fontSize: "5.8rem",
+              lineHeight: "6.3rem",
+            },
+            [theme.breakpoints.down("md")]: {
+              fontSize: "4.5rem",
+              lineHeight: "5rem",
+            },
           }}
         >
           New Year,{" "}
@@ -49,12 +85,18 @@ const HomePage = () => {
         </Typography>
         <Typography
           variant="h5"
-          width={"80%"}
+          width={{ md: "90%", lg: "80%" }}
           sx={{
             fontSize: "1.8rem",
             color: "white",
             fontFamily: "barlow",
             textAlign: "center",
+            [theme.breakpoints.down("lg")]: {
+              fontSize: "1.5rem",
+            },
+            [theme.breakpoints.down("md")]: {
+              fontSize: "1.4rem",
+            },
           }}
         >
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum
