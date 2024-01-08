@@ -3,10 +3,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App.tsx";
-import {
-  CartContextProvider,
-  ShoppingCartContextProvider,
-} from "./context/ShoppingCartContext.tsx";
+import { ShoppingCartContextProvider } from "./context/ShoppingCartContext.tsx";
 import "./index.css";
 
 const purpleTheme = createTheme({

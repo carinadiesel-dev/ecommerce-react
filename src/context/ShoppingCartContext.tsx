@@ -11,8 +11,6 @@ type CartItem = {
 };
 
 type ShoppingCartContext = {
-  openCart: () => void;
-  closeCart: () => void;
   getItemQuantity: (id: number) => number;
   increaseCartQuantity: (id: number) => void;
   decreaseCartQuantity: (id: number) => void;
@@ -35,11 +33,7 @@ export const ShoppingCartContext = createContext<ShoppingCartContext | null>(
 );
 
 export const ShoppingCartContextProvider = ({ children }: Props) => {
-  const [isOpen, setIsOpen] = useState(false);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
-
-  const openCart = () => setIsOpen(true);
-  const closeCart = () => setIsOpen(false);
 
   // returns total amount of items in cart
   const cartQuantity = cartItems.reduce(
@@ -123,8 +117,6 @@ export const ShoppingCartContextProvider = ({ children }: Props) => {
         clearCart,
         cartItems,
         cartQuantity,
-        openCart,
-        closeCart,
       }}
     >
       {children}

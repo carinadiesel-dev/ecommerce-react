@@ -1,7 +1,6 @@
 import AdbIcon from "@mui/icons-material/Adb";
 import MenuIcon from "@mui/icons-material/Menu";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { MenuItem, Toolbar, Tooltip, useTheme } from "@mui/material";
+import { MenuItem, Toolbar, useTheme } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -12,6 +11,8 @@ import Typography from "@mui/material/Typography";
 import * as React from "react";
 import { NavLink } from "react-router-dom";
 import logoImg from "../../assets/fakestoreLogo.png";
+import { useShoppingCartContext } from "../../context/ShoppingCartContext";
+import ShoppingCart from "../ShoppingCart";
 
 type Page = {
   title: string;
@@ -27,6 +28,7 @@ const cartItems = ["Item1", "Item2"];
 
 export default function NavBar() {
   const theme = useTheme();
+  const { cartQuantity } = useShoppingCartContext();
 
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
@@ -163,29 +165,10 @@ export default function NavBar() {
                 </Button>
               </NavLink>
             ))}
-            <Box sx={{ flexGrow: 0 }}>
-              <Tooltip title="Show Cart">
-                <Button
-                  sx={{
-                    py: 1,
-                    px: 3,
-                    my: 1,
-                    color: "white",
-                    display: "flex",
-                    gap: 1,
-                    fontWeight: "bold",
-                    border: ` 2px solid white`,
-                    "&:hover": {
-                      backgroundColor: theme.palette.secondary.light,
-                    },
-                  }}
-                  startIcon={<ShoppingCartIcon />}
-                  onClick={handleOpenCartMenu}
-                >
-                  View Cart
-                </Button>
-              </Tooltip>
-              <Menu
+            <ShoppingCart />
+          </Box>
+
+          {/* <Menu
                 sx={{ mt: "45px" }}
                 id="menu-appbar"
                 anchorEl={anchorElCart}
@@ -206,9 +189,7 @@ export default function NavBar() {
                     <Typography textAlign="center">{cartItem}</Typography>
                   </MenuItem>
                 ))}
-              </Menu>
-            </Box>
-          </Box>
+              </Menu> */}
         </Toolbar>
       </Container>
     </AppBar>
