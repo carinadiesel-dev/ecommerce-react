@@ -17,6 +17,7 @@ type ShoppingCartContext = {
   increaseCartQuantity: (id: number) => void;
   decreaseCartQuantity: (id: number) => void;
   removeFromCart: (id: number) => void;
+  clearCart: () => void;
   cartQuantity: number;
   cartItems: CartItem[];
 };
@@ -65,28 +66,6 @@ export const ShoppingCartContextProvider = ({ children }: Props) => {
     });
   }
 
-  // function decreaseCartQuantity(id: number) {
-  //   // Current list of items
-  //   setCartItems((currentItems) => {
-  //     // Check if there is an item in the cart with this id
-  //     if (currentItems.find(item) => item.id === id) === 1) {
-  //       // If it is in the cart,filter currentItems so the item matching the id is no longer in the list
-  //       return currentItems.filter((item) => item.id !== id);
-  //     } else {
-  //       // Map over items
-  //       return currentItems.map((item) => {
-  //         if (item.id === id) {
-  //           // If item is in cart, increase quantity
-  //           return { ...item, quantity: item.quantity++ };
-  //         } else {
-  //           // Return item as is
-  //           return item;
-  //         }
-  //       });
-  //     }
-  //   });
-  // }
-
   function decreaseCartQuantity(id: number) {
     // Current list of items
     setCartItems((currentItems) => {
@@ -109,8 +88,15 @@ export const ShoppingCartContextProvider = ({ children }: Props) => {
     });
   }
 
-  // Clearing Cart
-  // Set cart to empty array
+  function removeFromCart(id: number) {
+    setCartItems((currentItems) => {
+      return currentItems.filter((item) => item.id !== id);
+    });
+  }
+
+  function clearCart() {
+    return setCartItems([]);
+  }
 
   // Getting Cart Total
   // Add prices of all items. Possibly using a reducer ?
@@ -119,7 +105,13 @@ export const ShoppingCartContextProvider = ({ children }: Props) => {
 
   return (
     <ShoppingCartContext.Provider
-      value={{ getItemQuantity, increaseCartQuantity, decreaseCartQuantity }}
+      value={{
+        getItemQuantity,
+        increaseCartQuantity,
+        decreaseCartQuantity,
+        removeFromCart,
+        clearCart,
+      }}
     >
       {children}
     </ShoppingCartContext.Provider>
