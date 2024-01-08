@@ -3,7 +3,10 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App.tsx";
-import { CartContextProvider } from "./context/CartContext.tsx";
+import {
+  CartContextProvider,
+  ShoppingCartContextProvider,
+} from "./context/ShoppingCartContext.tsx";
 import "./index.css";
 
 const purpleTheme = createTheme({
@@ -40,11 +43,11 @@ const purpleTheme = createTheme({
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <ThemeProvider theme={purpleTheme}>
     <React.StrictMode>
-      <CartContextProvider>
+      <ShoppingCartContextProvider>
         <BrowserRouter>
           <App />
         </BrowserRouter>
-      </CartContextProvider>
+      </ShoppingCartContextProvider>
     </React.StrictMode>
   </ThemeProvider>
 );

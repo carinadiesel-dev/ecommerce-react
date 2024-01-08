@@ -6,7 +6,6 @@ import CardContent from "@mui/material/CardContent";
 import CardHeader from "@mui/material/CardHeader";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
-import { useCartContext } from "../../context/CartContext";
 
 type RecipeReviewCardProps = {
   id: number;
