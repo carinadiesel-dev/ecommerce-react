@@ -22,14 +22,14 @@ const purpleTheme = createTheme({
       main: "#a01a22",
     },
     info: {
-      main: "#3e92cc",
+      main: "#62BBC1",
     },
     success: {
       main: "#d1beb0",
     },
     background: {
       default: "#131D23",
-      paper: "#ffff",
+      paper: "#ffffff",
     },
   },
   typography: {

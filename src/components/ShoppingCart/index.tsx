@@ -1,17 +1,11 @@
-import MailIcon from "@mui/icons-material/Mail";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+
 import { Badge, IconButton } from "@mui/material";
 import Box from "@mui/material/Box";
-import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
 import * as React from "react";
 import { useShoppingCartContext } from "../../context/ShoppingCartContext";
+import CartItem from "./CartItem";
 
 type Anchor = "top" | "left" | "bottom" | "right";
 
@@ -23,7 +17,12 @@ export default function TemporaryDrawer() {
     right: false,
   });
 
-  const { openCart, cartQuantity } = useShoppingCartContext();
+  const {
+    cartQuantity,
+    increaseCartQuantity,
+    decreaseCartQuantity,
+    getItemQuantity,
+  } = useShoppingCartContext();
 
   const toggleDrawer =
     (anchor: Anchor, open: boolean) =>
@@ -41,12 +40,12 @@ export default function TemporaryDrawer() {
 
   const list = (anchor: Anchor) => (
     <Box
-      sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 250 }}
+      sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 500 }}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <List>
+      {/* <List>
         {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
@@ -57,26 +56,13 @@ export default function TemporaryDrawer() {
             </ListItemButton>
           </ListItem>
         ))}
-      </List>
-      <Divider />
-      <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
+      </List> */}
+      <CartItem />
     </Box>
   );
 
   return (
     <>
-      {/* <React.Fragment key={}> */}
       <Box sx={{ flexGrow: 0 }}>
         <Box sx={{ display: { xs: "none", md: "flex" } }}>
           <IconButton
@@ -97,7 +83,6 @@ export default function TemporaryDrawer() {
       >
         {list("right")}
       </Drawer>
-      {/* </React.Fragment> */}
     </>
   );
 }
