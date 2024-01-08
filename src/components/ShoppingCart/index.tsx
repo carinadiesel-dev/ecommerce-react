@@ -22,6 +22,7 @@ export default function TemporaryDrawer() {
     increaseCartQuantity,
     decreaseCartQuantity,
     getItemQuantity,
+    cartItems,
   } = useShoppingCartContext();
 
   const toggleDrawer =
@@ -40,7 +41,12 @@ export default function TemporaryDrawer() {
 
   const list = (anchor: Anchor) => (
     <Box
-      sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 500 }}
+      sx={{
+        width: anchor === "top" || anchor === "bottom" ? "auto" : 500,
+        display: "grid",
+        gap: 4,
+        padding: 2,
+      }}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
@@ -57,7 +63,21 @@ export default function TemporaryDrawer() {
           </ListItem>
         ))}
       </List> */}
-      <CartItem />
+      {cartItems &&
+        cartItems.map((item, index) => {
+          const quantity = getItemQuantity(item.id);
+          const total = parseFloat(item.price) * Number(quantity);
+          return (
+            <CartItem
+              id={item.id}
+              image={item.image}
+              productName={item.title}
+              unitCost={item.price}
+              quantity={quantity}
+              total={total}
+            />
+          );
+        })}
     </Box>
   );
 

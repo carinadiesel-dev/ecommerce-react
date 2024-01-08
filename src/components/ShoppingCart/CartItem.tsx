@@ -9,33 +9,83 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
-import testImg from "../../assets/womensClothing.jpg";
 import { useShoppingCartContext } from "../../context/ShoppingCartContext";
 
-export default function CartItem() {
+type CartItemProps = {
+  id: number;
+  productName: string;
+  unitCost: string;
+  quantity?: number;
+  total?: number;
+  image: string;
+};
+
+export default function CartItem({
+  id,
+  productName,
+  unitCost,
+  quantity,
+  total,
+  image,
+}: CartItemProps) {
   const theme = useTheme();
   const {
-    cartQuantity,
-    increaseCartQuantity,
-    decreaseCartQuantity,
-    getItemQuantity,
+    // cartQuantity,
+    // // increaseCartQuantity,
+    // // decreaseCartQuantity,
+    // getItemQuantity,
   } = useShoppingCartContext();
 
   return (
-    <Card sx={{ display: "flex", backgroundColor: theme.palette.primary.dark }}>
-      <CardMedia component="img" sx={{ width: 151 }} image={testImg} />
-      <Box width={"100%"}>
+    <Card
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        backgroundColor: theme.palette.primary.dark,
+        borderRadius: "20px",
+        borderColor: theme.palette.primary.dark,
+        borderWidth: 2,
+        borderStyle: "solid",
+        width: 500,
+        height: 180,
+      }}
+    >
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          backgroundColor: "white",
+          width: 200,
+          height: 180,
+          paddingX: 1,
+          paddingY: 2,
+        }}
+      >
+        <CardMedia
+          component="img"
+          sx={{
+            objectFit: "contain",
+            width: 160,
+            // maxWidth: 150,
+            maxHeight: 150,
+          }}
+          image={image}
+        />
+      </Box>
+      <Box>
         <CardContent sx={{ flex: "1 0 auto" }}>
           <Typography
             component="div"
             sx={{
               fontFamily: "inter",
-              fontSize: "24px",
+              fontSize: "22px",
               fontWeight: 500,
               margin: 0,
+              maxWidth: 300,
             }}
+            noWrap
           >
-            Product Name
+            {productName}
           </Typography>
           <Typography
             component="div"
@@ -47,13 +97,14 @@ export default function CartItem() {
               margin: 0,
             }}
           >
-            Item Cost Per Unit
+            $ {unitCost} Per Unit
           </Typography>
         </CardContent>
         <Box
           sx={{
             display: "flex",
-            alignItems: "center",
+            flexDirection: "column",
+            // alignItems: "center",
             justifyContent: "space-between",
             pl: 1,
             pb: 1,
@@ -63,11 +114,16 @@ export default function CartItem() {
             sx={{
               display: "flex",
               alignItems: "center",
-              pl: 1,
+              justifyContent: "flex-end",
+              //   pl: 1,
               pb: 1,
             }}
           >
-            <IconButton aria-label="decrease quantity" color="info">
+            <IconButton
+              aria-label="decrease quantity"
+              color="info"
+              // onClick={() => quantity--}
+            >
               <RemoveCircleIcon />
             </IconButton>
             <Box
@@ -80,11 +136,15 @@ export default function CartItem() {
               }}
             >
               <Typography sx={{ color: "black", fontWeight: 800 }}>
-                1
+                {quantity}
               </Typography>
             </Box>
 
-            <IconButton aria-label="increase quantity" color="info">
+            <IconButton
+              aria-label="increase quantity"
+              color="info"
+              //   onClick={() => increaseCartQuantity(id)}
+            >
               <AddCircleIcon />
             </IconButton>
             <IconButton aria-label="next"></IconButton>
@@ -93,18 +153,20 @@ export default function CartItem() {
             sx={{
               display: "flex",
               alignItems: "center",
-              justifyContent: "space-around",
-              width: 150,
-              pr: 1,
+              justifyContent: "center",
+              //   width: 200,
+              pr: 2,
               pb: 1,
+              gap: 1,
             }}
           >
             <Typography
               sx={{
                 fontFamily: "inter",
                 fontSize: "20px",
-                fontWeight: 500,
-                margin: 0,
+                fontWeight: 600,
+                textAlign: "end",
+                // marginLeft: 0,
               }}
             >
               Total :
@@ -112,12 +174,13 @@ export default function CartItem() {
             <Typography
               sx={{
                 fontFamily: "inter",
-                fontSize: "24px",
-                fontWeight: 400,
-                marginLeft: 0,
+                fontSize: "20px",
+                fontWeight: 600,
+                textAlign: "end",
+                // marginLeft: 0,
               }}
             >
-              $ 500
+              $ {total}
             </Typography>
           </Box>
         </Box>

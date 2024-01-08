@@ -6,6 +6,7 @@ import CardContent from "@mui/material/CardContent";
 import CardHeader from "@mui/material/CardHeader";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
+import { useShoppingCartContext } from "../../context/ShoppingCartContext";
 
 type RecipeReviewCardProps = {
   id: number;
@@ -14,6 +15,7 @@ type RecipeReviewCardProps = {
   category: string;
   description: string;
   image: any;
+  onClick: any;
 };
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
@@ -30,13 +32,10 @@ export default function ProductCard({
   category,
   description,
   image,
+  onClick,
 }: RecipeReviewCardProps) {
-  const [expanded, setExpanded] = React.useState(false);
-
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
   const theme = useTheme();
+  const { addToCart } = useShoppingCartContext();
 
   return (
     <Card
@@ -144,6 +143,7 @@ export default function ProductCard({
           <Box>
             <Button
               size="large"
+              onClick={onClick}
               sx={{
                 backgroundColor: theme.palette.primary.main,
                 color: "white",

@@ -1,6 +1,7 @@
 import { Box, Container, Grid, Typography, useTheme } from "@mui/material";
 import { useEffect, useState } from "react";
 import ProductCard from "../../components/ProductCard";
+import { useShoppingCartContext } from "../../context/ShoppingCartContext";
 
 interface Product {
   id: number;
@@ -14,7 +15,10 @@ interface Product {
 export default function AllProductsPage() {
   const theme = useTheme();
 
+  const { cartItems, setCartItems } = useShoppingCartContext();
+
   const [products, setProducts] = useState<Product[]>([]);
+  const { addToCart } = useShoppingCartContext();
 
   const fetchProductData = async () => {
     try {
@@ -77,6 +81,7 @@ export default function AllProductsPage() {
                   category={product.category}
                   description={product.description}
                   image={product.image}
+                  onClick={() => addToCart(product)}
                 />
               </Grid>
             );
