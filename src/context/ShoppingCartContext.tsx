@@ -43,6 +43,28 @@ export const ShoppingCartContextProvider = ({ children }: Props) => {
     return cartItems.find((item) => item.id == id)?.quantity || 0;
   }
 
+  function increaseCartQuantity(id: number) {
+    // Current list of items
+    setCartItems((currentItems) => {
+      // Check if there is an item in the cart with this id
+      if (currentItems.find((item) => item.id === id) == null) {
+        // If it isn't in cart,add it to the cart
+        return [...currentItems, { id, quantity: 1 }];
+      } else {
+        // Map over items
+        return currentItems.map((item) => {
+          if (item.id === id) {
+            // If item is in cart, increase quantity
+            return { ...item, quantity: item.quantity++ };
+          } else {
+            // Return item as is
+            return item;
+          }
+        });
+      }
+    });
+  }
+
   // Adding items to cart
   // Check if item is already in cart
   // If it is,increase the item quantity
@@ -63,7 +85,9 @@ export const ShoppingCartContextProvider = ({ children }: Props) => {
   // Use local storage maybe ?
 
   return (
-    <ShoppingCartContext.Provider value={{ getItemQuantity }}>
+    <ShoppingCartContext.Provider
+      value={{ getItemQuantity, increaseCartQuantity }}
+    >
       {children}
     </ShoppingCartContext.Provider>
   );
