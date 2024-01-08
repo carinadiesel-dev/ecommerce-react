@@ -47,7 +47,7 @@ export const ShoppingCartContextProvider = ({ children }: Props) => {
     // Current list of items
     setCartItems((currentItems) => {
       // Check if there is an item in the cart with this id
-      if (currentItems.find((item) => item.id === id) == null) {
+      if (currentItems.find((item) => item.id === id) === null) {
         // If it isn't in cart,add it to the cart
         return [...currentItems, { id, quantity: 1 }];
       } else {
@@ -65,16 +65,49 @@ export const ShoppingCartContextProvider = ({ children }: Props) => {
     });
   }
 
-  // Adding items to cart
-  // Check if item is already in cart
-  // If it is,increase the item quantity
-  // If it isn't, add item
+  // function decreaseCartQuantity(id: number) {
+  //   // Current list of items
+  //   setCartItems((currentItems) => {
+  //     // Check if there is an item in the cart with this id
+  //     if (currentItems.find(item) => item.id === id) === 1) {
+  //       // If it is in the cart,filter currentItems so the item matching the id is no longer in the list
+  //       return currentItems.filter((item) => item.id !== id);
+  //     } else {
+  //       // Map over items
+  //       return currentItems.map((item) => {
+  //         if (item.id === id) {
+  //           // If item is in cart, increase quantity
+  //           return { ...item, quantity: item.quantity++ };
+  //         } else {
+  //           // Return item as is
+  //           return item;
+  //         }
+  //       });
+  //     }
+  //   });
+  // }
 
-  // Removing items from cart
-  // Check if the item is in the cart
-  // If it is,check quantity
-  // If quantity === 1,remove item from cart
-  // If quantity > 1,reduce quantity by 1
+  function decreaseCartQuantity(id: number) {
+    // Current list of items
+    setCartItems((currentItems) => {
+      // Check if there is an item in the cart with this id
+      if (currentItems.find((item) => item.id === id)?.quantity === 1) {
+        // If it is in the cart, filter currentItems so the item matching the id is no longer in the list
+        return currentItems.filter((item) => item.id !== id);
+      } else {
+        // Map over items
+        return currentItems.map((item) => {
+          if (item.id === id) {
+            // If item is in cart, decrease quantity
+            return { ...item, quantity: item.quantity - 1 };
+          } else {
+            // Return item as is
+            return item;
+          }
+        });
+      }
+    });
+  }
 
   // Clearing Cart
   // Set cart to empty array
@@ -86,7 +119,7 @@ export const ShoppingCartContextProvider = ({ children }: Props) => {
 
   return (
     <ShoppingCartContext.Provider
-      value={{ getItemQuantity, increaseCartQuantity }}
+      value={{ getItemQuantity, increaseCartQuantity, decreaseCartQuantity }}
     >
       {children}
     </ShoppingCartContext.Provider>
