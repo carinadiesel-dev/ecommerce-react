@@ -35,7 +35,17 @@ export const ShoppingCartContext = createContext<ShoppingCartContext | null>(
 );
 
 export const ShoppingCartContextProvider = ({ children }: Props) => {
+  const [isOpen, setIsOpen] = useState(false);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+
+  const openCart = () => setIsOpen(true);
+  const closeCart = () => setIsOpen(false);
+
+  // returns total amount of items in cart
+  const cartQuantity = cartItems.reduce(
+    (quantity, item) => item.quantity + quantity,
+    0
+  );
 
   function getItemQuantity(id: number) {
     // Find item with current id,
@@ -111,6 +121,10 @@ export const ShoppingCartContextProvider = ({ children }: Props) => {
         decreaseCartQuantity,
         removeFromCart,
         clearCart,
+        cartItems,
+        cartQuantity,
+        openCart,
+        closeCart,
       }}
     >
       {children}
