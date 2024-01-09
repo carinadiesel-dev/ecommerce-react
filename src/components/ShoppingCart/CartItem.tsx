@@ -57,7 +57,7 @@ CartItemProps) {
           display: "flex",
           alignItems: "center",
           backgroundColor: "white",
-          width: 200,
+          width: 170,
           height: 180,
           paddingX: 1,
           paddingY: 2,
@@ -68,13 +68,12 @@ CartItemProps) {
           sx={{
             objectFit: "contain",
             width: 160,
-            // maxWidth: 150,
             maxHeight: 150,
           }}
           image={image}
         />
       </Box>
-      <Box>
+      <Box sx={{ width: "100%" }}>
         <CardContent sx={{ flex: "1 0 auto" }}>
           <Typography
             component="div"
@@ -83,7 +82,7 @@ CartItemProps) {
               fontSize: "22px",
               fontWeight: 500,
               margin: 0,
-              maxWidth: 300,
+              maxWidth: 290,
             }}
             noWrap
           >
@@ -106,7 +105,7 @@ CartItemProps) {
           sx={{
             display: "flex",
             flexDirection: "column",
-            // alignItems: "center",
+            alignItems: "end",
             justifyContent: "space-between",
             pl: 1,
             pb: 1,
@@ -116,8 +115,6 @@ CartItemProps) {
             sx={{
               display: "flex",
               alignItems: "center",
-              justifyContent: "flex-end",
-              //   pl: 1,
               pb: 1,
             }}
           >
@@ -156,8 +153,7 @@ CartItemProps) {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              //   width: 200,
-              pr: 2,
+              pr: 3,
               pb: 1,
               gap: 1,
             }}

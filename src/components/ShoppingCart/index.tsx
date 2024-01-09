@@ -1,6 +1,6 @@
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
-import { Badge, IconButton } from "@mui/material";
+import { Badge, Button, IconButton, Typography, useTheme } from "@mui/material";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import * as React from "react";
@@ -21,6 +21,7 @@ export default function TemporaryDrawer() {
     cartQuantity,
     increaseCartQuantity,
     decreaseCartQuantity,
+    clearCart,
     getItemQuantity,
     cartItems,
   } = useShoppingCartContext();
@@ -38,31 +39,32 @@ export default function TemporaryDrawer() {
 
       setState({ ...state, [anchor]: open });
     };
+  const theme = useTheme();
 
   const list = (anchor: Anchor) => (
     <Box
       sx={{
+        position: "relative",
         width: anchor === "top" || anchor === "bottom" ? "auto" : 500,
         display: "grid",
-        gap: 4,
-        padding: 2,
+        gap: 2,
+        padding: 4,
       }}
       role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
     >
-      {/* <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List> */}
+      <Typography
+        sx={{
+          fontSize: "5rem",
+          fontWeight: 600,
+          lineHeight: "5.5rem",
+          color: theme.palette.primary.dark,
+          paddingBottom: 4,
+          textAlign: "center",
+          textShadow: 4,
+        }}
+      >
+        Cart
+      </Typography>
       {cartItems &&
         cartItems.map((item, index) => {
           const quantity = getItemQuantity(item.id);
@@ -79,6 +81,26 @@ export default function TemporaryDrawer() {
             />
           );
         })}
+      ;
+      {!cartItems || cartItems.length === 0 ? (
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Typography
+            sx={{ fontSize: "22px", color: theme.palette.primary.dark }}
+          >
+            Cart is empty
+          </Typography>
+        </Box>
+      ) : (
+        <Button variant="contained" size="large" onClick={() => clearCart()}>
+          Clear Cart
+        </Button>
+      )}
     </Box>
   );
 
