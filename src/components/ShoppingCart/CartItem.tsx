@@ -18,6 +18,7 @@ type CartItemProps = {
   quantity?: number;
   total?: number;
   image: string;
+  // onClickDecrease: () => void;
 };
 
 export default function CartItem({
@@ -27,13 +28,14 @@ export default function CartItem({
   quantity,
   total,
   image,
-}: CartItemProps) {
+}: // onClickDecrease,
+CartItemProps) {
   const theme = useTheme();
   const {
-    // cartQuantity,
-    // // increaseCartQuantity,
-    // // decreaseCartQuantity,
-    // getItemQuantity,
+    cartQuantity,
+    increaseCartQuantity,
+    decreaseCartQuantity,
+    getItemQuantity,
   } = useShoppingCartContext();
 
   return (
@@ -122,7 +124,7 @@ export default function CartItem({
             <IconButton
               aria-label="decrease quantity"
               color="info"
-              // onClick={() => quantity--}
+              onClick={() => decreaseCartQuantity(id)}
             >
               <RemoveCircleIcon />
             </IconButton>
@@ -136,14 +138,14 @@ export default function CartItem({
               }}
             >
               <Typography sx={{ color: "black", fontWeight: 800 }}>
-                {quantity}
+                {getItemQuantity(id)}
               </Typography>
             </Box>
 
             <IconButton
               aria-label="increase quantity"
               color="info"
-              //   onClick={() => increaseCartQuantity(id)}
+              onClick={() => increaseCartQuantity(id)}
             >
               <AddCircleIcon />
             </IconButton>

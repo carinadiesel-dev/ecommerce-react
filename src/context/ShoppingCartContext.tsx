@@ -5,20 +5,24 @@ type CartItem = {
   quantity: number;
   title: string;
   price: string;
-  category: string;
-  description: string;
+  category?: string;
+  description?: string;
   image: string;
 };
+
+// TODO: Check Types
 
 type ShoppingCartContext = {
   getItemQuantity: (id: number) => number;
   addToCart: (item: CartItem) => void;
-  // increaseCartQuantity: (id: number) => void;
-  // decreaseCartQuantity: (id: number) => void;
-  removeFromCart: (item: CartItem) => void;
-  clearCart: () => void;
+  increaseCartQuantity: any;
+  decreaseCartQuantity: any;
+  removeFromCart: any;
+  clearCart: any;
   cartQuantity: number;
+  getCartItemQuantity: any;
   setCartItems: any;
+  getCartTotalCost: any;
   cartItems?: CartItem[];
 };
 
@@ -43,12 +47,16 @@ export const ShoppingCartContextProvider = ({ children }: Props) => {
     0
   );
 
-  // function getItemQuantity(id: number) {
-  //   // Find item with current id,
-  //   // If the value is found,return the quantity
-  //   // Else return default value of 0
-  //   return cartItems?.find((item) => item.id == id)?.quantity || 0;
-  // }
+  const getCartItemQuantity = (id: number) => {
+    const itemQuantity = cartItems.find((item) => item.id === id)?.quantity;
+
+    if (itemQuantity === undefined) {
+      return 0;
+    }
+
+    return itemQuantity;
+  };
+
   const getItemQuantity = (id: number) => {
     return cartItems?.find((item) => item.id == id)?.quantity || 0;
   };
@@ -71,53 +79,47 @@ export const ShoppingCartContextProvider = ({ children }: Props) => {
     }
   };
 
-  // function increaseCartQuantity(id: number) {
-  //   // Current list of items
-  //   setCartItems((currentItems) => {
-  //     // Map over items
-  //     return currentItems?.map((item) => {
-  //       if (item.id === id) {
-  //         // If item is in cart, increase quantity
-  //         return { ...item, quantity: item.quantity + 1 };
-  //       } else {
-  //         // Return item as is
-  //         return item;
-  //       }
-  //     });
-  //   });
-  // }
-
-  // function decreaseCartQuantity(id: number) {
-  //   // Current list of items
-  //   setCartItems((currentItems) => {
-  //     // Check if there is an item in the cart with this id
-  //     if (currentItems?.find((item) => item.id === id)?.quantity === 1) {
-  //       // If it is in the cart, filter currentItems so the item matching the id is no longer in the list
-  //       return currentItems?.filter((item) => item.id !== id);
-  //     } else {
-  //       // Map over items
-  //       return currentItems?.map((item) => {
-  //         if (item.id === id) {
-  //           // If item is in cart, decrease quantity
-  //           return { ...item, quantity: item.quantity - 1 };
-  //         } else {
-  //           // Return item as is
-  //           return item;
-  //         }
-  //       });
-  //     }
-  //   });
-  // }
-
-  const removeFromCart = (item: CartItem) => {
-    const isItemInCart = cartItems.find((cartItem) => cartItem.id === item.id);
+  const removeFromCart = (id: number) => {
+    setCartItems((cartItems) => cartItems.filter((item) => item.id !== id));
   };
-  function clearCart() {
-    return setCartItems([]);
-  }
 
-  // Getting Cart Total
-  // Add prices of all items. Possibly using a reducer ?
+  const increaseCartQuantity = (id: number) => {
+    const itemQuantity = getCartItemQuantity(id);
+
+    if (itemQuantity >= 1) {
+      setCartItems(
+        cartItems.map((item) =>
+          item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+        )
+      );
+    }
+  };
+
+  const decreaseCartQuantity = (id: number) => {
+    const itemQuantity = getCartItemQuantity(id);
+
+    if (itemQuantity === 1) {
+      removeFromCart(id);
+    } else {
+      setCartItems(
+        cartItems.map((item) =>
+          item.id === id ? { ...item, quantity: item.quantity - 1 } : item
+        )
+      );
+    }
+  };
+
+  const getCartTotalCost = () => {
+    let totalCost = 0;
+
+    cartItems.map((item) => (totalCost += item.quantity * Number(item.price)));
+
+    return totalCost;
+  };
+
+  const clearCart = () => {
+    setCartItems([]);
+  };
 
   // Use local storage maybe ?
 
@@ -126,13 +128,15 @@ export const ShoppingCartContextProvider = ({ children }: Props) => {
       value={{
         addToCart,
         getItemQuantity,
-        // increaseCartQuantity,
-        // decreaseCartQuantity,
+        increaseCartQuantity,
+        decreaseCartQuantity,
         removeFromCart,
+        getCartItemQuantity,
         clearCart,
         setCartItems,
         cartItems,
         cartQuantity,
+        getCartTotalCost,
       }}
     >
       {children}

@@ -69,11 +69,12 @@ export default function TemporaryDrawer() {
           const total = parseFloat(item.price) * Number(quantity);
           return (
             <CartItem
+              key={index}
               id={item.id}
               image={item.image}
               productName={item.title}
               unitCost={item.price}
-              quantity={quantity}
+              // quantity={quantity}
               total={total}
             />
           );
