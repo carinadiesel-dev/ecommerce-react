@@ -10,19 +10,15 @@ type CartItem = {
   image: string;
 };
 
-// TODO: Check Types
-
 type ShoppingCartContext = {
   getItemQuantity: (id: number) => number;
   addToCart: (item: CartItem) => void;
-  increaseCartQuantity: any;
-  decreaseCartQuantity: any;
-  removeFromCart: any;
-  clearCart: any;
+  increaseCartQuantity: (id: number) => void;
+  decreaseCartQuantity: (id: number) => void;
+  removeFromCart: (id: number) => void;
+  clearCart: () => void;
   cartQuantity: number;
-  getCartItemQuantity: any;
-  setCartItems: any;
-  getCartTotalCost: any;
+  getCartItemQuantity: (id: number) => number;
   cartItems?: CartItem[];
 };
 
@@ -121,8 +117,6 @@ export const ShoppingCartContextProvider = ({ children }: Props) => {
     setCartItems([]);
   };
 
-  // Use local storage maybe ?
-
   return (
     <ShoppingCartContext.Provider
       value={{
@@ -133,10 +127,8 @@ export const ShoppingCartContextProvider = ({ children }: Props) => {
         removeFromCart,
         getCartItemQuantity,
         clearCart,
-        setCartItems,
         cartItems,
         cartQuantity,
-        getCartTotalCost,
       }}
     >
       {children}

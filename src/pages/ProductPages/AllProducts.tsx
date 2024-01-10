@@ -18,12 +18,11 @@ interface Product {
   category: string;
   description: string;
   image: string;
+  quantity: number;
 }
 
 export default function AllProductsPage() {
   const theme = useTheme();
-
-  const { cartItems, setCartItems } = useShoppingCartContext();
 
   const [products, setProducts] = useState<Product[]>([]);
   const { addToCart } = useShoppingCartContext();

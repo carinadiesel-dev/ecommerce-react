@@ -8,14 +8,12 @@ import Typography from "@mui/material/Typography";
 import * as React from "react";
 import { useShoppingCartContext } from "../../context/ShoppingCartContext";
 
-type RecipeReviewCardProps = {
+type ProductCardProps = {
   id: number;
   title: string;
   price: string;
-  category: string;
-  description: string;
-  image: any;
-  onClick: any;
+  image: string;
+  onClick: () => void;
 };
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
@@ -29,11 +27,9 @@ export default function ProductCard({
   id,
   title,
   price,
-  category,
-  description,
   image,
   onClick,
-}: RecipeReviewCardProps) {
+}: ProductCardProps) {
   const theme = useTheme();
   const { addToCart } = useShoppingCartContext();
 
