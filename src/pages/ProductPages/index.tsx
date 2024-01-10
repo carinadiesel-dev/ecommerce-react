@@ -52,8 +52,8 @@ const ProductsHomePage = () => {
       sx={{ backgroundColor: theme.palette.secondary.main, overflow: "hidden" }}
     >
       <Box
-        height={"60rem"}
         sx={{
+          height: "60rem",
           display: "flex",
           backgroundImage: `url(${productsHeaderImg})`,
           backgroundSize: "cover",
@@ -62,13 +62,21 @@ const ProductsHomePage = () => {
           backgroundPositionY: -100,
           [theme.breakpoints.down("xl")]: {
             backgroundPositionY: -50,
-            backgroundPositionX: -150,
+            backgroundPositionX: 0,
+            height: "50rem",
           },
           [theme.breakpoints.down("lg")]: {
-            backgroundPositionX: -400,
+            backgroundPositionX: -100,
           },
           [theme.breakpoints.down("md")]: {
             backgroundImage: "none",
+            height: "80vh",
+            alignItems: "center",
+          },
+          [theme.breakpoints.down("md")]: {
+            backgroundImage: "none",
+            height: "90vh",
+            alignItems: "center",
           },
         }}
       >
@@ -91,12 +99,14 @@ const ProductsHomePage = () => {
               marginTop: 18,
             },
             [theme.breakpoints.down("lg")]: {
-              height: 600,
+              height: 550,
               marginTop: 5,
             },
             [theme.breakpoints.down("md")]: {
               width: "100%",
               boxShadow: "none",
+              justifyContent: "space-between",
+              marginLeft: 0,
             },
           }}
         >
@@ -111,6 +121,10 @@ const ProductsHomePage = () => {
               [theme.breakpoints.down("xl")]: {
                 fontSize: "5rem",
                 lineHeight: "5.5rem",
+              },
+              [theme.breakpoints.down("md")]: {
+                fontSize: "7rem",
+                lineHeight: "7.5rem",
               },
             }}
           >
@@ -135,6 +149,14 @@ const ProductsHomePage = () => {
                   fontSize: "3.5rem",
                   lineHeight: "4rem",
                 },
+                [theme.breakpoints.down("md")]: {
+                  fontSize: "6rem",
+                  lineHeight: "6.5rem",
+                },
+                [theme.breakpoints.down("sm")]: {
+                  fontSize: "5rem",
+                  lineHeight: "5.5rem",
+                },
               }}
             >
               You'll <img src={loveImg} height={100} /> Love
@@ -147,10 +169,29 @@ const ProductsHomePage = () => {
               [theme.breakpoints.down("lg")]: {
                 flexDirection: "column",
                 gap: 4,
+                width: "25rem",
+              },
+              [theme.breakpoints.down("lg")]: {
+                flexDirection: "column",
+                gap: 4,
+                width: "40rem",
+              },
+              [theme.breakpoints.down("sm")]: {
+                alignItems: "center",
               },
             }}
           >
-            <Link href={"/products/all-products"}>
+            <Link
+              href={"/products/all-products"}
+              sx={{
+                [theme.breakpoints.down("lg")]: {
+                  width: "100%",
+                },
+                [theme.breakpoints.down("sm")]: {
+                  width: "80%",
+                },
+              }}
+            >
               <Button
                 size="large"
                 sx={{
@@ -175,7 +216,17 @@ const ProductsHomePage = () => {
                 Shop All Products
               </Button>
             </Link>
-            <Link href="#shopByCategory">
+            <Link
+              href="#shopByCategory"
+              sx={{
+                [theme.breakpoints.down("lg")]: {
+                  width: "100%",
+                },
+                [theme.breakpoints.down("sm")]: {
+                  width: "80%",
+                },
+              }}
+            >
               <Button
                 size="large"
                 sx={{
@@ -214,6 +265,11 @@ const ProductsHomePage = () => {
             paddingBottom: 7,
             textAlign: "center",
             textShadow: 4,
+            [theme.breakpoints.down("sm")]: {
+              fontSize: "5rem",
+              lineHeight: "5.5rem",
+              paddingBottom: 10,
+            },
           }}
         >
           Shop By Category
@@ -226,6 +282,9 @@ const ProductsHomePage = () => {
             gap: 8,
             justifyContent: "center",
             py: 5,
+            [theme.breakpoints.down("sm")]: {
+              gap: 12,
+            },
           }}
         >
           {categories.map((category, index) => (
