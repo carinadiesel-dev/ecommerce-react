@@ -15,7 +15,7 @@ const HomePage = () => {
         },
         [theme.breakpoints.down("sm")]: {
           flexDirection: "column",
-          height: "50rem",
+          height: "90vh",
         },
       }}
     >
@@ -46,6 +46,10 @@ const HomePage = () => {
           [theme.breakpoints.down("lg")]: {
             padding: 5,
           },
+          [theme.breakpoints.down("sm")]: {
+            height: "100%",
+            justifyContent: "space-around",
+          },
         }}
       >
         <Typography
@@ -55,13 +59,21 @@ const HomePage = () => {
             fontFamily: "inter",
             fontSize: "8rem",
             lineHeight: "8.3rem",
+            [theme.breakpoints.down("xl")]: {
+              fontSize: "7rem",
+              lineHeight: "7.3rem",
+            },
             [theme.breakpoints.down("lg")]: {
-              fontSize: "5.8rem",
+              fontSize: "5.5rem",
               lineHeight: "6.3rem",
             },
             [theme.breakpoints.down("md")]: {
               fontSize: "4.5rem",
               lineHeight: "5rem",
+            },
+            [theme.breakpoints.down("sm")]: {
+              fontSize: "5.3rem",
+              lineHeight: "6rem",
             },
           }}
         >
@@ -80,17 +92,23 @@ const HomePage = () => {
         </Typography>
         <Typography
           variant="h5"
-          width={{ md: "90%", lg: "80%" }}
+          width={{ md: "90%", lg: "80%", xl: "90%" }}
           sx={{
             fontSize: "1.8rem",
             color: "white",
             fontFamily: "barlow",
             textAlign: "center",
+            [theme.breakpoints.down("xl")]: {
+              fontSize: "1.6rem",
+            },
             [theme.breakpoints.down("lg")]: {
               fontSize: "1.5rem",
             },
             [theme.breakpoints.down("md")]: {
               fontSize: "1.4rem",
+            },
+            [theme.breakpoints.down("sm")]: {
+              fontSize: "1.5rem",
             },
           }}
         >
@@ -98,7 +116,14 @@ const HomePage = () => {
           assumenda dolorum, iusto laudantium eum harum, explicabo qui debitis
           veritatis totam asperiores.
         </Typography>
-        <Link href="/products">
+        <Link
+          href="/products"
+          sx={{
+            [theme.breakpoints.down("sm")]: {
+              width: "100%",
+            },
+          }}
+        >
           <Button
             startIcon={<StoreIcon />}
             size="large"
@@ -111,6 +136,9 @@ const HomePage = () => {
 
               "&:hover": {
                 backgroundColor: theme.palette.secondary.light,
+              },
+              [theme.breakpoints.down("sm")]: {
+                width: "100%",
               },
             }}
           >
