@@ -1,4 +1,12 @@
-import { Box, Container, Grid, Typography, useTheme } from "@mui/material";
+import {
+  Alert,
+  Box,
+  Container,
+  Grid,
+  Snackbar,
+  Typography,
+  useTheme,
+} from "@mui/material";
 import { useEffect, useState } from "react";
 import ProductCard from "../../components/ProductCard";
 import { useShoppingCartContext } from "../../context/ShoppingCartContext";
@@ -34,6 +42,23 @@ export default function AllProductsPage() {
   useEffect(() => {
     fetchProductData();
   }, []);
+
+  const [open, setOpen] = useState(false);
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (
+    event?: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
 
   return (
     <Box
@@ -81,12 +106,25 @@ export default function AllProductsPage() {
                   category={product.category}
                   description={product.description}
                   image={product.image}
-                  onClick={() => addToCart(product)}
+                  onClick={() => {
+                    addToCart(product), setOpen(true);
+                  }}
                 />
               </Grid>
             );
           })}
         </Grid>
+        <Snackbar
+          open={open}
+          autoHideDuration={6000}
+          onClose={handleClose}
+          sx={{ display: "flex", alignItems: "center" }}
+          color="info"
+        >
+          <Alert onClose={handleClose} severity="info" sx={{ width: "100%" }}>
+            Item successfully added to cart
+          </Alert>
+        </Snackbar>
       </Container>
     </Box>
   );
