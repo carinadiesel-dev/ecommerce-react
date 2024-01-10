@@ -1,34 +1,37 @@
 import { Box, Button, CardMedia, useTheme } from "@mui/material";
+import MuiAlert, { AlertProps } from "@mui/material/Alert";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardHeader from "@mui/material/CardHeader";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
+import { useShoppingCartContext } from "../../context/ShoppingCartContext";
 
-type RecipeReviewCardProps = {
+type ProductCardProps = {
   id: number;
   title: string;
   price: string;
-  category: string;
-  description: string;
-  image: any;
+  image: string;
+  onClick: () => void;
 };
+
+const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
+  props,
+  ref
+) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 export default function ProductCard({
   id,
   title,
   price,
-  category,
-  description,
   image,
-}: RecipeReviewCardProps) {
-  const [expanded, setExpanded] = React.useState(false);
-
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
+  onClick,
+}: ProductCardProps) {
   const theme = useTheme();
+  const { addToCart } = useShoppingCartContext();
 
   return (
     <Card
@@ -136,6 +139,7 @@ export default function ProductCard({
           <Box>
             <Button
               size="large"
+              onClick={onClick}
               sx={{
                 backgroundColor: theme.palette.primary.main,
                 color: "white",
