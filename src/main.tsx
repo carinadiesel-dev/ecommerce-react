@@ -3,6 +3,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App.tsx";
+import { ShoppingCartContextProvider } from "./context/ShoppingCartContext.tsx";
 import "./index.css";
 
 const purpleTheme = createTheme({
@@ -21,14 +22,14 @@ const purpleTheme = createTheme({
       main: "#a01a22",
     },
     info: {
-      main: "#3e92cc",
+      main: "#62BBC1",
     },
     success: {
       main: "#d1beb0",
     },
     background: {
       default: "#131D23",
-      paper: "#ffff",
+      paper: "#ffffff",
     },
   },
   typography: {
@@ -39,9 +40,11 @@ const purpleTheme = createTheme({
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <ThemeProvider theme={purpleTheme}>
     <React.StrictMode>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <ShoppingCartContextProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </ShoppingCartContextProvider>
     </React.StrictMode>
   </ThemeProvider>
 );
