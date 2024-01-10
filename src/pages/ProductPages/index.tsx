@@ -126,6 +126,10 @@ const ProductsHomePage = () => {
                 fontSize: "7rem",
                 lineHeight: "7.5rem",
               },
+              [theme.breakpoints.down("sm")]: {
+                fontSize: "5rem",
+                lineHeight: "5.5rem",
+              },
             }}
           >
             Products{" "}
@@ -154,8 +158,8 @@ const ProductsHomePage = () => {
                   lineHeight: "6.5rem",
                 },
                 [theme.breakpoints.down("sm")]: {
-                  fontSize: "5rem",
-                  lineHeight: "5.5rem",
+                  fontSize: "4rem",
+                  lineHeight: "4.5rem",
                 },
               }}
             >
@@ -188,7 +192,7 @@ const ProductsHomePage = () => {
                   width: "100%",
                 },
                 [theme.breakpoints.down("sm")]: {
-                  width: "80%",
+                  width: "80vw",
                 },
               }}
             >
@@ -211,6 +215,9 @@ const ProductsHomePage = () => {
                   [theme.breakpoints.down("lg")]: {
                     width: "100%",
                   },
+                  [theme.breakpoints.down("sm")]: {
+                    width: "80vw",
+                  },
                 }}
               >
                 Shop All Products
@@ -223,7 +230,7 @@ const ProductsHomePage = () => {
                   width: "100%",
                 },
                 [theme.breakpoints.down("sm")]: {
-                  width: "80%",
+                  width: "80vw",
                 },
               }}
             >
@@ -245,6 +252,9 @@ const ProductsHomePage = () => {
                   },
                   [theme.breakpoints.down("lg")]: {
                     width: "100%",
+                  },
+                  [theme.breakpoints.down("sm")]: {
+                    width: "80vw",
                   },
                 }}
               >
