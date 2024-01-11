@@ -43,6 +43,18 @@ export default function ProductCard({
         flexDirection: "column",
         borderRadius: "20px",
         padding: 3,
+        [theme.breakpoints.down("xl")]: {
+          width: 300,
+        },
+        [theme.breakpoints.down("lg")]: {
+          width: 250,
+        },
+        [theme.breakpoints.down("md")]: {
+          width: 300,
+        },
+        [theme.breakpoints.down("sm")]: {
+          width: "75vw",
+        },
       }}
     >
       <Box
@@ -99,6 +111,10 @@ export default function ProductCard({
           width: "100%",
           paddingY: 1,
           paddingX: 2,
+          [theme.breakpoints.down("sm")]: {
+            flexDirection: "column",
+            gap: 4,
+          },
         }}
       >
         <CardContent
@@ -134,6 +150,9 @@ export default function ProductCard({
             alignItems: "center",
             justifyContent: "flex-end",
             padding: 0,
+            [theme.breakpoints.down("sm")]: {
+              justifyContent: "center",
+            },
           }}
         >
           <Box>
@@ -149,6 +168,9 @@ export default function ProductCard({
                 "&:hover": {
                   backgroundColor: theme.palette.primary.dark,
                   color: "white",
+                },
+                [theme.breakpoints.down("sm")]: {
+                  px: 13,
                 },
               }}
             >

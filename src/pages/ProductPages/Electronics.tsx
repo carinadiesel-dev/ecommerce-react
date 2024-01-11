@@ -15,8 +15,6 @@ interface Product {
   id: number;
   title: string;
   price: string;
-  category: string;
-  description: string;
   image: string;
   quantity: number;
 }
@@ -77,6 +75,10 @@ export default function ElectronicsPage() {
           paddingBottom: 7,
           textAlign: "center",
           textShadow: 4,
+          [theme.breakpoints.down("sm")]: {
+            fontSize: "5rem",
+            lineHeight: "5.5rem",
+          },
         }}
       >
         Electronics
@@ -92,7 +94,7 @@ export default function ElectronicsPage() {
       >
         <Grid
           container
-          spacing={{ xs: 2, md: 3, lg: 8 }}
+          spacing={{ xs: 16, sm: 8, md: 8, lg: 8 }}
           justifyContent="center"
           alignItems="center"
         >
@@ -103,8 +105,6 @@ export default function ElectronicsPage() {
                   id={product.id}
                   title={product.title}
                   price={product.price}
-                  category={product.category}
-                  description={product.description}
                   image={product.image}
                   onClick={() => {
                     addToCart(product), setOpen(true);

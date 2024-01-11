@@ -1,15 +1,15 @@
+import CancelIcon from "@mui/icons-material/Cancel";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-
 import { Badge, Button, IconButton, Typography, useTheme } from "@mui/material";
 import Box from "@mui/material/Box";
-import Drawer from "@mui/material/Drawer";
+import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import * as React from "react";
 import { useShoppingCartContext } from "../../context/ShoppingCartContext";
 import CartItem from "./CartItem";
 
 type Anchor = "top" | "left" | "bottom" | "right";
 
-export default function TemporaryDrawer() {
+export default function SwipeableTemporaryDrawer() {
   const [state, setState] = React.useState({
     top: false,
     left: false,
@@ -26,10 +26,25 @@ export default function TemporaryDrawer() {
     cartItems,
   } = useShoppingCartContext();
 
+  // const toggleDrawer =
+  //   (anchor: Anchor, open: boolean) =>
+  //   (event: React.KeyboardEvent | React.MouseEvent) => {
+  //     if (
+  //       event.type === "keydown" &&
+  //       ((event as React.KeyboardEvent).key === "Tab" ||
+  //         (event as React.KeyboardEvent).key === "Shift")
+  //     ) {
+  //       return;
+  //     }
+
+  //     setState({ ...state, [anchor]: open });
+  //   };
+
   const toggleDrawer =
     (anchor: Anchor, open: boolean) =>
     (event: React.KeyboardEvent | React.MouseEvent) => {
       if (
+        event &&
         event.type === "keydown" &&
         ((event as React.KeyboardEvent).key === "Tab" ||
           (event as React.KeyboardEvent).key === "Shift")
@@ -39,6 +54,7 @@ export default function TemporaryDrawer() {
 
       setState({ ...state, [anchor]: open });
     };
+
   const theme = useTheme();
 
   const list = (anchor: Anchor) => (
@@ -49,9 +65,21 @@ export default function TemporaryDrawer() {
         display: "grid",
         gap: 2,
         padding: 4,
+        borderRadius: "20px",
+        [theme.breakpoints.down("sm")]: {
+          width: "80vw",
+        },
       }}
       role="presentation"
     >
+      <IconButton
+        sx={{ position: "absolute", top: 12, right: 10 }}
+        color="primary"
+        onClick={toggleDrawer(anchor, false)}
+        size="large"
+      >
+        <CancelIcon />
+      </IconButton>
       <Typography
         sx={{
           fontSize: "5rem",
@@ -76,7 +104,6 @@ export default function TemporaryDrawer() {
               image={item.image}
               productName={item.title}
               unitCost={item.price}
-              // quantity={quantity}
               total={total}
             />
           );
@@ -106,8 +133,15 @@ export default function TemporaryDrawer() {
 
   return (
     <>
-      <Box sx={{ flexGrow: 0 }}>
-        <Box sx={{ display: { xs: "none", md: "flex" } }}>
+      <Box
+        sx={{
+          flexGrow: 0,
+          [theme.breakpoints.down("sm")]: {
+            width: "75vw",
+          },
+        }}
+      >
+        <Box>
           <IconButton
             size="large"
             color="inherit"
@@ -119,13 +153,14 @@ export default function TemporaryDrawer() {
           </IconButton>
         </Box>
       </Box>
-      <Drawer
+      <SwipeableDrawer
         anchor={"right"}
         open={state["right"]}
         onClose={toggleDrawer("right", false)}
+        onOpen={toggleDrawer("right", true)}
       >
         {list("right")}
-      </Drawer>
+      </SwipeableDrawer>
     </>
   );
 }

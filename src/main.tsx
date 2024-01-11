@@ -35,6 +35,15 @@ const purpleTheme = createTheme({
   typography: {
     fontFamily: ["Barlow", "Inter"].join(","),
   },
+  components: {
+    MuiMenu: {
+      styleOverrides: {
+        root: {
+          width: "100rem",
+        },
+      },
+    },
+  },
 });
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
