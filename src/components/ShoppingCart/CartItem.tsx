@@ -50,6 +50,9 @@ CartItemProps) {
         borderStyle: "solid",
         width: 500,
         height: 180,
+        [theme.breakpoints.down("sm")]: {
+          width: 430,
+        },
       }}
     >
       <Box
@@ -61,6 +64,9 @@ CartItemProps) {
           height: 180,
           paddingX: 1,
           paddingY: 2,
+          [theme.breakpoints.down("sm")]: {
+            width: 130,
+          },
         }}
       >
         <CardMedia
@@ -69,6 +75,9 @@ CartItemProps) {
             objectFit: "contain",
             width: 160,
             maxHeight: 150,
+            [theme.breakpoints.down("sm")]: {
+              width: 120,
+            },
           }}
           image={image}
         />
@@ -83,6 +92,10 @@ CartItemProps) {
               fontWeight: 500,
               margin: 0,
               maxWidth: 290,
+              [theme.breakpoints.down("sm")]: {
+                fontSize: "20px",
+                maxWidth: 250,
+              },
             }}
             noWrap
           >
