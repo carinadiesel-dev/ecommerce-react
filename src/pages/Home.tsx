@@ -5,17 +5,37 @@ import heroImg from "../assets/hero.jpg";
 const HomePage = () => {
   const theme = useTheme();
   return (
-    <Box sx={{ display: "flex", overflow: "hidden", height: "55rem" }}>
+    <Box
+      sx={{
+        display: "flex",
+        overflow: "hidden",
+        height: "55rem",
+        [theme.breakpoints.down("md")]: {
+          height: "45rem",
+        },
+        [theme.breakpoints.down("sm")]: {
+          flexDirection: "column",
+          height: "90vh",
+        },
+      }}
+    >
       <Box
-        width="40%"
+        width={{ sm: "100%", md: "50%", xl: "40%" }}
         sx={{
           backgroundImage: `url(${heroImg})`,
           backgroundSize: "cover",
           backgroundPositionY: -50,
+          [theme.breakpoints.down("lg")]: {
+            backgroundPositionY: 0,
+            backgroundPositionX: -50,
+          },
+          [theme.breakpoints.down("sm")]: {
+            display: "none",
+          },
         }}
       ></Box>
       <Box
-        width="60%"
+        width={{ sm: "100%", md: "50%", xl: "60%" }}
         sx={{
           backgroundColor: theme.palette.secondary.main,
           display: "flex",
@@ -23,6 +43,13 @@ const HomePage = () => {
           alignItems: "center",
           justifyContent: "space-evenly",
           padding: 8,
+          [theme.breakpoints.down("lg")]: {
+            padding: 5,
+          },
+          [theme.breakpoints.down("sm")]: {
+            height: "100%",
+            justifyContent: "space-around",
+          },
         }}
       >
         <Typography
@@ -32,6 +59,22 @@ const HomePage = () => {
             fontFamily: "inter",
             fontSize: "8rem",
             lineHeight: "8.3rem",
+            [theme.breakpoints.down("xl")]: {
+              fontSize: "7rem",
+              lineHeight: "7.3rem",
+            },
+            [theme.breakpoints.down("lg")]: {
+              fontSize: "5.5rem",
+              lineHeight: "6.3rem",
+            },
+            [theme.breakpoints.down("md")]: {
+              fontSize: "4.5rem",
+              lineHeight: "5rem",
+            },
+            [theme.breakpoints.down("sm")]: {
+              fontSize: "5.3rem",
+              lineHeight: "6rem",
+            },
           }}
         >
           New Year,{" "}
@@ -49,19 +92,38 @@ const HomePage = () => {
         </Typography>
         <Typography
           variant="h5"
-          width={"80%"}
+          width={{ md: "90%", lg: "80%", xl: "90%" }}
           sx={{
             fontSize: "1.8rem",
             color: "white",
             fontFamily: "barlow",
             textAlign: "center",
+            [theme.breakpoints.down("xl")]: {
+              fontSize: "1.6rem",
+            },
+            [theme.breakpoints.down("lg")]: {
+              fontSize: "1.5rem",
+            },
+            [theme.breakpoints.down("md")]: {
+              fontSize: "1.4rem",
+            },
+            [theme.breakpoints.down("sm")]: {
+              fontSize: "1.5rem",
+            },
           }}
         >
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum
           assumenda dolorum, iusto laudantium eum harum, explicabo qui debitis
           veritatis totam asperiores.
         </Typography>
-        <Link href="/products">
+        <Link
+          href="/products"
+          sx={{
+            [theme.breakpoints.down("sm")]: {
+              width: "100%",
+            },
+          }}
+        >
           <Button
             startIcon={<StoreIcon />}
             size="large"
@@ -74,6 +136,9 @@ const HomePage = () => {
 
               "&:hover": {
                 backgroundColor: theme.palette.secondary.light,
+              },
+              [theme.breakpoints.down("sm")]: {
+                width: "100%",
               },
             }}
           >

@@ -25,6 +25,9 @@ export default function CategoryCard({
           backgroundSize: "cover",
           backgroundPosition: "center",
           boxShadow: 4,
+          [theme.breakpoints.down("sm")]: {
+            width: "80vw",
+          },
         }}
       >
         <Chip

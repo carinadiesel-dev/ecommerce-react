@@ -1,4 +1,3 @@
-import AdbIcon from "@mui/icons-material/Adb";
 import MenuIcon from "@mui/icons-material/Menu";
 import { MenuItem, Toolbar, useTheme } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
@@ -33,35 +32,34 @@ export default function NavBar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
-  const [anchorElCart, setAnchorElCart] = React.useState<null | HTMLElement>(
-    null
-  );
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenCartMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElCart(event.currentTarget);
   };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 
-  const handleCloseCartMenu = () => {
-    setAnchorElCart(null);
-  };
-
   return (
     <AppBar
       position="static"
-      sx={{ backgroundColor: theme.palette.primary.main }}
+      sx={{
+        backgroundColor: theme.palette.primary.main,
+        [theme.breakpoints.down("md")]: {
+          height: 80,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        },
+      }}
     >
-      <Container maxWidth="xl">
+      <Container maxWidth="xl" sx={{ position: "relative" }}>
         <Toolbar disableGutters>
-          <Box sx={{ marginRight: 4 }}>
+          <Box sx={{ marginRight: 4, display: { xs: "none", md: "flex" } }}>
             <img src={logoImg} alt="" height={50} />
           </Box>
+
           <Typography
             variant="h6"
             noWrap
@@ -78,7 +76,12 @@ export default function NavBar() {
             FAKE STORE
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: "flex", md: "none" },
+            }}
+          >
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -89,6 +92,7 @@ export default function NavBar() {
             >
               <MenuIcon />
             </IconButton>
+
             <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
@@ -105,22 +109,47 @@ export default function NavBar() {
               onClose={handleCloseNavMenu}
               sx={{
                 display: { xs: "block", md: "none" },
+                textDecoration: "none",
               }}
             >
               {pages.map((page, index) => (
                 <MenuItem
                   key={index}
                   onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: "white", display: "block" }}
+                  sx={{
+                    my: 2,
+                    color: "white",
+                    display: "block",
+                    textDecoration: "none",
+                  }}
                 >
-                  <NavLink to={page.href}>
-                    <Typography textAlign="center">{page.title}</Typography>
+                  <NavLink to={page.href} style={{ textDecoration: "none" }}>
+                    <Typography sx={{ fontWeight: 800 }} textAlign="center">
+                      {page.title}
+                    </Typography>
                   </NavLink>
                 </MenuItem>
               ))}
             </Menu>
+            <Box
+              sx={{
+                position: "absolute",
+                top: 9,
+                right: 7,
+                [theme.breakpoints.down("sm")]: {
+                  top: 5,
+                  left: 55,
+                },
+              }}
+            >
+              <Box>
+                <ShoppingCart />
+              </Box>
+            </Box>
           </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
+          <Box sx={{ marginRight: 4, display: { sm: "flex", md: "none" } }}>
+            <img src={logoImg} alt="" height={50} />
+          </Box>
           <Typography
             variant="h5"
             noWrap
@@ -137,7 +166,7 @@ export default function NavBar() {
               textDecoration: "none",
             }}
           >
-            THE STORE
+            FAKE STORE
           </Typography>
           <Box
             sx={{
@@ -167,29 +196,6 @@ export default function NavBar() {
             ))}
             <ShoppingCart />
           </Box>
-
-          {/* <Menu
-                sx={{ mt: "45px" }}
-                id="menu-appbar"
-                anchorEl={anchorElCart}
-                anchorOrigin={{
-                  vertical: "top",
-                  horizontal: "center",
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "center",
-                }}
-                open={Boolean(anchorElCart)}
-                onClose={handleCloseCartMenu}
-              >
-                {cartItems.map((cartItem) => (
-                  <MenuItem key={cartItem} onClick={handleCloseCartMenu}>
-                    <Typography textAlign="center">{cartItem}</Typography>
-                  </MenuItem>
-                ))}
-              </Menu> */}
         </Toolbar>
       </Container>
     </AppBar>
