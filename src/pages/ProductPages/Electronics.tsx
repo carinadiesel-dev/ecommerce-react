@@ -31,7 +31,6 @@ export default function ElectronicsPage() {
       );
       const parsedResponse = await response.json();
       setProducts(parsedResponse);
-      console.log(parsedResponse);
     } catch (error) {
       console.log("error finding product", error);
     }

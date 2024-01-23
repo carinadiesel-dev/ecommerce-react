@@ -23,8 +23,6 @@ const pages: Page[] = [
   { title: "Products", href: "/products" },
 ];
 
-const cartItems = ["Item1", "Item2"];
-
 export default function NavBar() {
   const theme = useTheme();
   const { cartQuantity } = useShoppingCartContext();

@@ -30,7 +30,6 @@ export default function AllProductsPage() {
       const response = await fetch("https://fakestoreapi.com/products");
       const parsedResponse = await response.json();
       setProducts(parsedResponse);
-      console.log(parsedResponse);
     } catch (error) {
       console.log("error finding product", error);
     }

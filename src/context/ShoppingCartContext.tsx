@@ -5,8 +5,6 @@ type CartItem = {
   quantity: number;
   title: string;
   price: string;
-  category?: string;
-  description?: string;
   image: string;
 };
 
@@ -56,8 +54,6 @@ export const ShoppingCartContextProvider = ({ children }: Props) => {
   const getItemQuantity = (id: number) => {
     return cartItems?.find((item) => item.id == id)?.quantity || 0;
   };
-
-  console.log(getItemQuantity);
 
   const addToCart = (item: CartItem) => {
     const isItemInCart = cartItems.find((cartItem) => cartItem.id === item.id);
