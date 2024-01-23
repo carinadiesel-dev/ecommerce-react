@@ -1,16 +1,14 @@
-import MenuIcon from "@mui/icons-material/Menu";
-import { MenuItem, Toolbar, useTheme } from "@mui/material";
+import { Toolbar, useTheme } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
-import IconButton from "@mui/material/IconButton";
-import Menu from "@mui/material/Menu";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
 import { NavLink } from "react-router-dom";
 import logoImg from "../../assets/fakestoreLogo.png";
 import { useShoppingCartContext } from "../../context/ShoppingCartContext";
+import MobileNavDrawer from "../MobileNavDrawer/index";
 import ShoppingCart from "../ShoppingCart";
 
 type Page = {
@@ -25,15 +23,10 @@ const pages: Page[] = [
 
 export default function NavBar() {
   const theme = useTheme();
-  const { cartQuantity } = useShoppingCartContext();
 
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
-
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget);
-  };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
@@ -52,9 +45,14 @@ export default function NavBar() {
         },
       }}
     >
-      <Container maxWidth="xl" sx={{ position: "relative" }}>
+      <Container
+        maxWidth="xl"
+        sx={{
+          position: "relative",
+        }}
+      >
         <Toolbar disableGutters>
-          <Box sx={{ marginRight: 4, display: { xs: "none", md: "flex" } }}>
+          <Box sx={{ marginRight: 4, display: { sm: "none", lg: "flex" } }}>
             <img src={logoImg} alt="" height={50} />
           </Box>
 
@@ -63,72 +61,26 @@ export default function NavBar() {
             noWrap
             sx={{
               mr: 2,
-              display: { xs: "none", md: "flex" },
+              display: { xs: "none", md: "none", lg: "flex" },
               fontFamily: "monospace",
               fontWeight: 700,
               letterSpacing: ".3rem",
               color: "inherit",
               textDecoration: "none",
+              alignItems: "center",
             }}
           >
-            FAKE STORE
+            FAKE STORE biiig
           </Typography>
 
           <Box
             sx={{
-              flexGrow: 1,
               display: { xs: "flex", md: "none" },
             }}
           >
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: "block", md: "none" },
-                textDecoration: "none",
-              }}
-            >
-              {pages.map((page, index) => (
-                <MenuItem
-                  key={index}
-                  onClick={handleCloseNavMenu}
-                  sx={{
-                    my: 2,
-                    color: "white",
-                    display: "block",
-                    textDecoration: "none",
-                  }}
-                >
-                  <NavLink to={page.href} style={{ textDecoration: "none" }}>
-                    <Typography sx={{ fontWeight: 800 }} textAlign="center">
-                      {page.title}
-                    </Typography>
-                  </NavLink>
-                </MenuItem>
-              ))}
-            </Menu>
+            <Box>
+              <MobileNavDrawer />
+            </Box>
             <Box
               sx={{
                 position: "absolute",
@@ -136,7 +88,7 @@ export default function NavBar() {
                 right: 7,
                 [theme.breakpoints.down("sm")]: {
                   top: 5,
-                  left: 55,
+                  left: 1000,
                 },
               }}
             >
@@ -145,7 +97,7 @@ export default function NavBar() {
               </Box>
             </Box>
           </Box>
-          <Box sx={{ marginRight: 4, display: { sm: "flex", md: "none" } }}>
+          <Box sx={{ marginRight: 4, display: { sm: "none", md: "none" } }}>
             <img src={logoImg} alt="" height={50} />
           </Box>
           <Typography
@@ -155,13 +107,15 @@ export default function NavBar() {
             href="#app-bar-with-responsive-menu"
             sx={{
               mr: 2,
-              display: { xs: "flex", md: "none" },
+              display: { xs: "flex", lg: "none" },
               flexGrow: 1,
               fontFamily: "monospace",
               fontWeight: 700,
               letterSpacing: ".3rem",
               color: "inherit",
               textDecoration: "none",
+              alignItems: "center",
+              justifyContent: "center",
             }}
           >
             FAKE STORE
@@ -176,7 +130,11 @@ export default function NavBar() {
             }}
           >
             {pages.map((page, index) => (
-              <NavLink to={page.href} style={{ textDecoration: "none" }}>
+              <NavLink
+                key={index}
+                to={page.href}
+                style={{ textDecoration: "none" }}
+              >
                 <Button
                   key={index}
                   onClick={handleCloseNavMenu}
