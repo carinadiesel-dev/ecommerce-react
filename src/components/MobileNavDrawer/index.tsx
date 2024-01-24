@@ -54,7 +54,12 @@ export default function MobileNavDrawer() {
   const theme = useTheme();
   const list = (anchor: Anchor) => (
     <Box
-      sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 250 }}
+      sx={{
+        width: anchor === "top" || anchor === "bottom" ? "auto" : 250,
+        [theme.breakpoints.down("sm")]: {
+          width: "80vw",
+        },
+      }}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}

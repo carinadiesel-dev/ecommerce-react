@@ -18,25 +18,18 @@ type CartItemProps = {
   quantity?: number;
   total?: number;
   image: string;
-  // onClickDecrease: () => void;
 };
 
 export default function CartItem({
   id,
   productName,
   unitCost,
-  quantity,
   total,
   image,
-}: // onClickDecrease,
-CartItemProps) {
+}: CartItemProps) {
   const theme = useTheme();
-  const {
-    cartQuantity,
-    increaseCartQuantity,
-    decreaseCartQuantity,
-    getItemQuantity,
-  } = useShoppingCartContext();
+  const { increaseCartQuantity, decreaseCartQuantity, getItemQuantity } =
+    useShoppingCartContext();
 
   return (
     <Card

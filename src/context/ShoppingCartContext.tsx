@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 type CartItem = {
   id: number;
@@ -18,10 +18,6 @@ type ShoppingCartContext = {
   cartQuantity: number;
   getCartItemQuantity: (id: number) => number;
   cartItems?: CartItem[];
-};
-
-type ShoppingCartProviderProps = {
-  children: ReactNode;
 };
 
 type Props = {
@@ -101,13 +97,15 @@ export const ShoppingCartContextProvider = ({ children }: Props) => {
     }
   };
 
-  const getCartTotalCost = () => {
-    let totalCost = 0;
+  // Possible future feature
+  // -----------------------
+  // const getCartTotalCost = () => {
+  //   let totalCost = 0;
 
-    cartItems.map((item) => (totalCost += item.quantity * Number(item.price)));
+  //   cartItems.map((item) => (totalCost += item.quantity * Number(item.price)));
 
-    return totalCost;
-  };
+  //   return totalCost;
+  // };
 
   const clearCart = () => {
     setCartItems([]);

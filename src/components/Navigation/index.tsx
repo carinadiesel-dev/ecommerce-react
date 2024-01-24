@@ -7,7 +7,6 @@ import Typography from "@mui/material/Typography";
 import * as React from "react";
 import { NavLink } from "react-router-dom";
 import logoImg from "../../assets/fakestoreLogo.png";
-import { useShoppingCartContext } from "../../context/ShoppingCartContext";
 import MobileNavDrawer from "../MobileNavDrawer/index";
 import ShoppingCart from "../ShoppingCart";
 
@@ -52,7 +51,12 @@ export default function NavBar() {
         }}
       >
         <Toolbar disableGutters>
-          <Box sx={{ marginRight: 4, display: { sm: "none", lg: "flex" } }}>
+          <Box
+            sx={{
+              marginRight: 4,
+              display: { sm: "none", md: "flex", lg: "flex" },
+            }}
+          >
             <img src={logoImg} alt="" height={50} />
           </Box>
 
@@ -97,7 +101,12 @@ export default function NavBar() {
               </Box>
             </Box>
           </Box>
-          <Box sx={{ marginRight: 4, display: { sm: "none", md: "none" } }}>
+          <Box
+            sx={{
+              marginRight: 4,
+              display: { sm: "none", md: "none", lg: "flex" },
+            }}
+          >
             <img src={logoImg} alt="" height={50} />
           </Box>
           <Typography

@@ -17,14 +17,8 @@ export default function SwipeableTemporaryDrawer() {
     right: false,
   });
 
-  const {
-    cartQuantity,
-    increaseCartQuantity,
-    decreaseCartQuantity,
-    clearCart,
-    getItemQuantity,
-    cartItems,
-  } = useShoppingCartContext();
+  const { cartQuantity, clearCart, getItemQuantity, cartItems } =
+    useShoppingCartContext();
 
   const toggleDrawer =
     (anchor: Anchor, open: boolean) =>
