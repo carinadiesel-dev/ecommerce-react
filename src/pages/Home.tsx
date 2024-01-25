@@ -16,6 +16,7 @@ const HomePage = () => {
         [theme.breakpoints.down("sm")]: {
           flexDirection: "column",
           height: "90vh",
+          width: "100vw",
         },
       }}
     >

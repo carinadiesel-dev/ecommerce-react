@@ -54,10 +54,10 @@ export default function NavBar() {
           <Box
             sx={{
               marginRight: 4,
-              display: { sm: "none", md: "flex", lg: "flex" },
+              display: { xs: "none", sm: "none", md: "none", lg: "block" },
             }}
           >
-            <img src={logoImg} alt="" height={50} />
+            <img src={logoImg} height={50} />
           </Box>
 
           <Typography
@@ -65,7 +65,7 @@ export default function NavBar() {
             noWrap
             sx={{
               mr: 2,
-              display: { xs: "none", md: "none", lg: "flex" },
+              display: { xs: "none", lg: "flex" },
               fontFamily: "monospace",
               fontWeight: 700,
               letterSpacing: ".3rem",
@@ -101,14 +101,7 @@ export default function NavBar() {
               </Box>
             </Box>
           </Box>
-          <Box
-            sx={{
-              marginRight: 4,
-              display: { sm: "none", md: "none", lg: "flex" },
-            }}
-          >
-            <img src={logoImg} alt="" height={50} />
-          </Box>
+
           <Typography
             variant="h5"
             noWrap
@@ -127,6 +120,14 @@ export default function NavBar() {
               justifyContent: "center",
             }}
           >
+            <Box
+              sx={{
+                marginRight: 4,
+                // display: { sm: "flex" },
+              }}
+            >
+              <img src={logoImg} alt="" height={50} />
+            </Box>
             FAKE STORE
           </Typography>
           <Box

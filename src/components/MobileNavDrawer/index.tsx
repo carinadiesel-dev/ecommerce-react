@@ -55,6 +55,8 @@ export default function MobileNavDrawer() {
   const list = (anchor: Anchor) => (
     <Box
       sx={{
+        marginLeft: 5,
+        marginTop: 5,
         width: anchor === "top" || anchor === "bottom" ? "auto" : 250,
         [theme.breakpoints.down("sm")]: {
           width: "80vw",
@@ -64,12 +66,12 @@ export default function MobileNavDrawer() {
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <List>
+      <List sx={{}}>
         {pages.map((page, index) => (
           <ListItem
             key={index}
             sx={{
-              my: 2,
+              my: 4,
               color: "purple",
               textDecoration: "none",
             }}
@@ -80,12 +82,16 @@ export default function MobileNavDrawer() {
                 textDecoration: "none",
                 display: "flex",
                 alignItems: "center",
-                gap: 4,
+                gap: 8,
               }}
             >
               <Icon>{page.icon}</Icon>
               <Typography
-                sx={{ fontWeight: 800, color: theme.palette.primary.dark }}
+                sx={{
+                  fontSize: "24px",
+                  fontWeight: 800,
+                  color: theme.palette.primary.dark,
+                }}
                 textAlign="center"
               >
                 {page.title}
