@@ -48,6 +48,7 @@ export default function SwipeableTemporaryDrawer() {
         borderRadius: "20px",
         [theme.breakpoints.down("sm")]: {
           width: "80vw",
+          justifyContent: "center",
         },
       }}
       role="presentation"

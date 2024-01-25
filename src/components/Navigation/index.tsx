@@ -92,7 +92,7 @@ export default function NavBar() {
                 right: 7,
                 [theme.breakpoints.down("sm")]: {
                   top: 5,
-                  left: 1000,
+                  left: 70,
                 },
               }}
             >
