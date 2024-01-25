@@ -170,7 +170,6 @@ export default function CartItem({
                 fontSize: "20px",
                 fontWeight: 600,
                 textAlign: "end",
-                // marginLeft: 0,
               }}
             >
               Total :
@@ -181,7 +180,6 @@ export default function CartItem({
                 fontSize: "20px",
                 fontWeight: 600,
                 textAlign: "end",
-                // marginLeft: 0,
               }}
             >
               $ {total}

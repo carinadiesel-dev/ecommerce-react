@@ -123,7 +123,6 @@ export default function NavBar() {
             <Box
               sx={{
                 marginRight: 4,
-                // display: { sm: "flex" },
               }}
             >
               <img src={logoImg} alt="" height={50} />

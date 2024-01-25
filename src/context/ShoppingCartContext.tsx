@@ -31,7 +31,6 @@ export const ShoppingCartContext = createContext<ShoppingCartContext | null>(
 export const ShoppingCartContextProvider = ({ children }: Props) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
-  // returns total amount of items in cart
   const cartQuantity = cartItems?.reduce(
     (quantity, item) => item.quantity + quantity,
     0

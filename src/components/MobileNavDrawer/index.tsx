@@ -66,7 +66,7 @@ export default function MobileNavDrawer() {
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <List sx={{}}>
+      <List>
         {pages.map((page, index) => (
           <ListItem
             key={index}
